@@ -1,0 +1,20 @@
+# Byte-compiled / cached
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Outputs
+outputs/figures/*.png
+outputs/figures/*.jpg
