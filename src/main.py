@@ -39,8 +39,24 @@ def main():
 
     # Initialize Core System and Logic
     print("\n--- Phase 2: Core System & Inventory Logic ---")
-    # Initialize the BloodBank object
+    
+    # --- OOP INTEGRATION LOOP ---
+    print("Initializing system memory and registering donors...")
     regional_bank = BloodBank(name="SPARK South South Regional Blood Bank")
+    
+    # Loop through the Pandas DataFrame and create a Donor object for each row
+    for index, row in df.iterrows():
+        new_donor = Donor(
+            donor_id=row['donor_id'],
+            name=row['donor_name'],
+            blood_type=row['blood_type'],
+            volume_ml=row['volume_ml']
+        )
+        # Add the donor to the bank's registry silently
+        regional_bank.donors.append(new_donor) 
+        
+    print(f"✅ Successfully registered {regional_bank.get_total_donors()} donors into the active system memory.")
+    # ---------------------------------
     
     # Run the supply check and shortage flagger functions
     inventory_levels = check_supply(df)
